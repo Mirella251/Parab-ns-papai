@@ -1,0 +1,338 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Feliz aniversário, pai! 💗</title>
+
+<style>
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  min-height: 100vh;
+  background: #fff8f5;
+  color: #694b45;
+  font-family: Georgia, serif;
+  text-align: center;
+}
+
+.tela {
+  display: none;
+  min-height: 100vh;
+  padding: 28px 18px;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 20px;
+}
+
+.tela.ativa {
+  display: flex;
+}
+
+h1 {
+  color: #bd777d;
+  font-size: clamp(2rem, 7vw, 3rem);
+  margin: 0;
+}
+
+h2 {
+  color: #bd777d;
+}
+
+p {
+  font-size: 1.2rem;
+  line-height: 1.6;
+  max-width: 600px;
+}
+
+button {
+  border: none;
+  border-radius: 30px;
+  padding: 14px 28px;
+  background: #d98f98;
+  color: white;
+  font-size: 1.05rem;
+  cursor: pointer;
+  box-shadow: 0 4px 10px #00000018;
+}
+
+button:hover {
+  background: #c87883;
+}
+
+img {
+  display: block;
+  max-width: 90%;
+  height: auto;
+  object-fit: contain;
+}
+
+.snoopy {
+  width: min(300px, 75vw);
+  mix-blend-mode: multiply;
+}
+
+.foto-pai {
+  width: min(420px, 90vw);
+  max-height: 65vh;
+  object-fit: contain;
+  border: 10px solid white;
+  border-radius: 8px;
+  box-shadow: 0 5px 20px #00000020;
+}
+
+.menu {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(130px, 1fr));
+  gap: 18px;
+  width: min(440px, 95vw);
+}
+
+.menu button {
+  background: #fff;
+  padding: 12px;
+  border: 2px solid #f0d4d3;
+}
+
+.menu img {
+  width: 100%;
+  height: 145px;
+  object-fit: contain;
+  mix-blend-mode: multiply;
+}
+
+.coracoes {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(130px, 1fr));
+  gap: 18px;
+  width: min(650px, 95vw);
+}
+
+.coracao {
+  background: #f7d6dc;
+  color: #9f4d5a;
+  aspect-ratio: 1 / 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 24px;
+  clip-path: polygon(
+    50% 92%, 10% 57%, 3% 40%, 5% 25%,
+    16% 12%, 31% 12%, 50% 29%,
+    69% 12%, 84% 12%, 95% 25%,
+    97% 40%, 90% 57%
+  );
+  font-size: 1rem;
+  line-height: 1.3;
+}
+
+.carta {
+  background: #fffdf7;
+  border: 1px solid #eadbc9;
+  box-shadow: 0 5px 20px #00000012;
+  width: min(600px, 92vw);
+  padding: 35px 25px;
+  text-align: left;
+  line-height: 1.9;
+  font-size: 1.15rem;
+  white-space: pre-line;
+  transform: rotate(-1deg);
+}
+
+#areaConfete {
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  overflow: hidden;
+  z-index: 10;
+}
+
+.confete {
+  position: absolute;
+  top: -20px;
+  width: 10px;
+  height: 16px;
+  animation: cair 2.8s linear forwards;
+}
+
+@keyframes cair {
+  to {
+    transform: translateY(110vh) rotate(720deg);
+  }
+}
+
+.revelacao {
+  width: min(500px, 90vw);
+  border-radius: 12px;
+  box-shadow: 0 5px 20px #00000020;
+}
+
+.escondido {
+  display: none;
+}
+
+.voltar {
+  margin-top: 10px;
+  background: #a9849b;
+}
+</style>
+</head>
+
+<body>
+
+<!-- TELA 1: CAPA -->
+<section id="inicio" class="tela ativa">
+  <h1>Feliz aniversário!</h1>
+  <img
+    class="snoopy"
+    src="imagens/IMG_0947.JPG"
+    alt="Snoopy e Woodstock de aniversário"
+  >
+  <button data-ir="mensagem">Vamos lá</button>
+</section>
+
+<!-- TELA 2: MENSAGEM -->
+<section id="mensagem" class="tela">
+  <img
+    class="snoopy"
+    src="imagens/IMG_0946.JPG"
+    alt="Snoopy com um laço"
+  >
+  <p>Por mais que o maior presente que você possa ganhar seja eu, eu preparei outra coisa.</p>
+  <button data-ir="menu">Continuar</button>
+</section>
+
+<!-- TELA 3: MENU -->
+<section id="menu" class="tela">
+  <h2>Escolha um Snoopy 💗</h2>
+  <p>Escolha um deles para descobrir sua surpresa!</p>
+
+  <div class="menu">
+    <button data-ir="foto">
+      <img src="imagens/IMG_0942.JPG" alt="Snoopy 1">
+    </button>
+
+    <button data-ir="coracoes">
+      <img src="imagens/IMG_0943.JPG" alt="Snoopy 2">
+    </button>
+
+    <button data-ir="google">
+      <img src="imagens/IMG_0944.JPG" alt="Snoopy 3">
+    </button>
+
+    <button data-ir="carta">
+      <img src="imagens/IMG_0945.JPG" alt="Snoopy 4">
+    </button>
+  </div>
+</section>
+
+<!-- SURPRESA 1: FOTO -->
+<section id="foto" class="tela">
+  <h1>Você é o melhor pai do mundo! 💗</h1>
+  <img
+    class="foto-pai"
+    src="imagens/IMG_0999.jpg"
+    alt="Foto com meu pai"
+  >
+  <button class="voltar" data-ir="menu">Voltar ao menu</button>
+</section>
+
+<!-- SURPRESA 2: CORAÇÕES -->
+<section id="coracoes" class="tela">
+  <h1>Algumas verdades sobre você 💗</h1>
+
+  <div class="coracoes">
+    <div class="coracao">eu te amo</div>
+    <div class="coracao">melhor pai do mundo</div>
+    <div class="coracao">estar com você deixa meu dia mais colorido</div>
+    <div class="coracao">você é uma das pessoas mais especiais pra mim</div>
+    <div class="coracao">se tivesse que te dar uma nota de 1 a 10 vc seria 1000</div>
+    <div class="coracao">Que vc seja mais feliz a cada dia que passa</div>
+  </div>
+
+  <button class="voltar" data-ir="menu">Voltar ao menu</button>
+</section>
+
+<!-- SURPRESA 3: CONFETES -->
+<section id="google" class="tela">
+  <h1>Eu não preciso de Google nem ChatGPT</h1>
+  <p>Porque eu já tenho o melhor pai do mundo! 💗</p>
+
+  <button id="botaoConfete">Clique para descobrir sua surpresa 🎉</button>
+
+  <div id="areaConfete"></div>
+
+  <img
+    id="imagemRevelacao"
+    class="revelacao escondido"
+    src="imagens/IMG_REVELACAO.jpg"
+    alt="Surpresa de aniversário"
+  >
+
+  <button class="voltar" data-ir="menu">Voltar ao menu</button>
+</section>
+
+<!-- SURPRESA 4: CARTA -->
+<section id="carta" class="tela">
+  <h1>Uma cartinha para você 💌</h1>
+
+  <div class="carta">Pai feliz aniversário muitos anos de vida que Deus te abençoe e que eu possa ficar do seu lado pra sempre,você é uma das pessoas mais maravilhosas que conheço,você é meu ponto seguro,meu melhor amigo e a cima de tudo meu pai
+
+Bjs te amo parabéns</div>
+
+  <button class="voltar" data-ir="menu">Voltar ao menu</button>
+</section>
+
+<script>
+function mostrarTela(id) {
+  document.querySelectorAll(".tela").forEach(function(tela) {
+    tela.classList.remove("ativa");
+  });
+
+  const telaEscolhida = document.getElementById(id);
+
+  if (telaEscolhida) {
+    telaEscolhida.classList.add("ativa");
+  }
+}
+
+document.addEventListener("click", function(event) {
+  const botao = event.target.closest("[data-ir]");
+
+  if (botao) {
+    mostrarTela(botao.getAttribute("data-ir"));
+  }
+});
+
+const botaoConfete = document.getElementById("botaoConfete");
+const areaConfete = document.getElementById("areaConfete");
+const imagemRevelacao = document.getElementById("imagemRevelacao");
+
+botaoConfete.addEventListener("click", function() {
+  areaConfete.innerHTML = "";
+  imagemRevelacao.classList.add("escondido");
+
+  const cores = ["#f4a6b5", "#f8d477", "#a8d8c8", "#c5a4d8", "#f3a56f"];
+
+  for (let i = 0; i < 140; i++) {
+    const pedaco = document.createElement("span");
+    pedaco.className = "confete";
+    pedaco.style.left = Math.random() * 100 + "vw";
+    pedaco.style.backgroundColor = cores[Math.floor(Math.random() * cores.length)];
+    pedaco.style.animationDelay = Math.random() * 1.2 + "s";
+    pedaco.style.transform = "rotate(" + Math.random() * 360 + "deg)";
+    areaConfete.appendChild(pedaco);
+  }
+
+  setTimeout(function() {
+    imagemRevelacao.classList.remove("escondido");
+  }, 1900);
+});
+</script>
+
+</body>
+</html>
